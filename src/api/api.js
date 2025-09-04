@@ -4,7 +4,7 @@ import request from './request'
 export default {
   getTableData() {
     return request({
-      url: '/api/home/getTableData',
+      url: '/home/getTableData',
       method: 'get',
     })
   },

@@ -1,6 +1,9 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
-const service = axios.create()
+import config from '@/config'
+const service = axios.create({
+  baseURL: config.baseApi,
+})
 const NETWORK_ERROR = '网络错误...'
 // 添加请求拦截器
 axios.interceptors.request.use(
@@ -28,6 +31,19 @@ service.interceptors.response.use((res) => {
 
 function request(options) {
   options.method = options.method || 'get'
+  if (options.method.toLowerCase() === 'get') {
+    options.params = options.data
+  }
+  let isMock = config.mock
+  if (typeof options.mock !== 'undefined') {
+    isMock = options.mock
+  }
+  //针对环境做一个处理
+  if (config.env === 'prod') {
+    service.defaults.baseURL = config.baseApi
+  } else {
+    service.defaults.baseURL = isMock ? config.mockApi : config.baseApi
+  }
   return service(options)
 }
 export default request
