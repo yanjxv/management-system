@@ -6,7 +6,7 @@ const getImageUrl = (user) => {
 
 <template>
   <el-row class="home" :gutter="20">
-    <el-col: span="8" style="margin-top: 20px">
+    <el-col :span="8" style="margin-top: 20px">
       <el-card>
         <div class="user">
           <img :src="getImageUrl('user')" class="user" />
@@ -20,7 +20,7 @@ const getImageUrl = (user) => {
           <p>上次登录地点:<span>北京</span></p>
         </div>
       </el-card>
-    </el-col:>
+    </el-col>
   </el-row>
 </template>
 
