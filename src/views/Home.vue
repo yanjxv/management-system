@@ -1,13 +1,35 @@
 <script setup>
+import { ref } from 'vue'
 const getImageUrl = (user) => {
   return new URL(`../assets/images/${user}.png`, import.meta.url).href
 }
+const tableData = ref([
+  {
+    name: 'Java',
+    todayBuy: 100,
+    monthBuy: 200,
+    totalBuy: 300,
+  },
+  {
+    name: 'Python',
+    todayBuy: 100,
+    monthBuy: 200,
+    totalBuy: 300,
+  },
+])
+
+const tableLabel = ref({
+  name: '课程',
+  todayBuy: '今日购买',
+  monthBuy: '本月购买',
+  totalBuy: '总购买',
+})
 </script>
 
 <template>
   <el-row class="home" :gutter="20">
     <el-col :span="8" style="margin-top: 20px">
-      <el-card>
+      <el-card shadow="hover">
         <div class="user">
           <img :src="getImageUrl('user')" class="user" />
           <div class="user-info">
@@ -19,6 +41,18 @@ const getImageUrl = (user) => {
           <p>上次登录时间:<span>2024-06-30</span></p>
           <p>上次登录地点:<span>北京</span></p>
         </div>
+      </el-card>
+
+      <el-card shadow="hover" class="user-table">
+        <el-table :data="tableData">
+          <el-table-column
+            v-for="(val, key) in tableLabel"
+            :key="key"
+            :prop="key"
+            :label="val"
+          >
+          </el-table-column>
+        </el-table>
       </el-card>
     </el-col>
   </el-row>
@@ -61,6 +95,9 @@ const getImageUrl = (user) => {
         margin-left: 60px;
       }
     }
+  }
+  .user-table {
+    margin-top: 20px;
   }
 }
 </style>
