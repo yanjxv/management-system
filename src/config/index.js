@@ -1,22 +1,21 @@
-const env = import.meta.env.MODE || 'prod'
+const env = import.meta.env.MOOE || 'prod'
 const EnvConfig = {
   development: {
     baseApi: '/api',
-    mockApi: 'https://apifoxmock.com/m1/4068509-0-default/api/home/getTable',
+    mockApi: 'https://apifoxmock.com/m1/4068509-0-default/api',
   },
-  development: {
+  test: {
     baseApi: '//test.future.com/api',
-    mockApi: 'https://apifoxmock.com/m1/4068509-0-default/api/home/getTable',
+    mockApi: 'https://apifoxmock.com/m1/4068509-0-default/api',
   },
-  development: {
+  prod: {
     baseApi: '//future.com/api',
-    mockApi: 'https://apifoxmock.com/m1/4068509-0-default/api/home/getTable',
+    mockApi: 'https://apifoxmock.com/m1/4068509-0-default/api',
   },
 }
 
 export default {
   env,
   ...EnvConfig[env],
-  //mock
   mock: true,
 }

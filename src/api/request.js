@@ -4,9 +4,9 @@ import config from '@/config'
 const service = axios.create({
   baseURL: config.baseApi,
 })
-const NETWORK_ERROR = '网络错误. . .'
+const NETWORK_ERROR = '网络错误...'
 // 添加请求拦截器
-service.interceptors.request.use(
+axios.interceptors.request.use(
   function (config) {
     // 在发送请求之前做些什么
     return config
@@ -19,20 +19,18 @@ service.interceptors.request.use(
 
 // 添加响应拦截器
 service.interceptors.response.use((res) => {
-  console.log(res)
   const { code, data, msg } = res.data
   if (code === 200) {
     return data
   } else {
-    const NETWORK_ERROR = '网络错误. . .'
-    ElMessage.eroor(msg || NETWORK_ERROR)
+    const NETWORK_ERROR = '网络错误...'
+    ElMessage.error(msg || NETWORK_ERROR)
     return Promise.reject(msg || NETWORK_ERROR)
   }
 })
 
 function request(options) {
   options.method = options.method || 'get'
-  //关于get请求参数的调整
   if (options.method.toLowerCase() === 'get') {
     options.params = options.data
   }
