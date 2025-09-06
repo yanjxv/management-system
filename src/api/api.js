@@ -21,4 +21,10 @@ export default {
       method: 'get',
     })
   },
+  getUserData() {
+    return request({
+      url: '/home/getUsertData',
+      method: 'get',
+    })
+  },
 }
