@@ -23,7 +23,7 @@ export default {
   },
   getUserData() {
     return request({
-      url: '/home/getUsertData',
+      url: '/home/getUserData',
       method: 'get',
     })
   },
