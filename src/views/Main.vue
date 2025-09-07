@@ -28,5 +28,4 @@ import CommonHeader from '@/components/CommonHeader.vue'
 .el-header {
   background-color: #333;
 }
-//1
 </style>
