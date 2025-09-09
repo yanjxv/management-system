@@ -68,7 +68,7 @@ const handleDelete = (val) => {
   })
 }
 const action = ref('add')
-const dialogVisible = ref(true)
+const dialogVisible = ref(false)
 const formUser = reactive({
   sex: '1',
 })

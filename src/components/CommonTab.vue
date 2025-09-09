@@ -1,3 +1,12 @@
+<script setup>
+import { ref, computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { useAllDataStore } from '@/stores'
+const store = useAllDataStore()
+const tags = computed(() => store.state.tags)
+const route = useRoute()
+</script>
+
 <template>
   <div class="tags">
     <el-tag
@@ -10,20 +19,6 @@
     </el-tag>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue'
-import { useRoute } from 'vue-router'
-const tags = ref([
-  {
-    path: '/home',
-    name: 'home',
-    label: '首页',
-    icon: 'home',
-  },
-])
-const route = useRoute()
-</script>
 
 <style lang="less" scoped>
 .tags {
