@@ -101,6 +101,7 @@ const width = computed(() => (store.state.isCollapse ? '64px' : '180px'))
 const router = useRouter()
 const route = useRoute()
 const activeMenu = computed(() => route.path)
+
 const handleMenu = (item) => {
   router.push(item.path)
   store.selectMenu(item)
