@@ -35,6 +35,7 @@ export const useAllDataStore = defineStore('allData', () => {
     if (val.name === 'home') {
       state.value.currentMenu = null
     } else {
+      state.value.currentMenu = val
       let index = state.value.tags.findIndex((item) => item.name === val.name)
       index === -1 ? state.value.tags.push(val) : ''
     }
@@ -75,7 +76,11 @@ export const useAllDataStore = defineStore('allData', () => {
     state.value.routerList = []
     let routers = router.getRoutes()
     routers.forEach((item) => {
-      if (item.name == 'main' || item.name == 'login' || item.name == '404') {
+      if (
+        item.name === 'main' ||
+        item.name === 'login' ||
+        item.name === '404'
+      ) {
         return
       } else {
         router.removeRoute(item.name)
